@@ -46,7 +46,3 @@ The Car Rental System does not have any external dependencies. It utilizes stand
 Contributing
 Contributions to enhance the functionality or add new features are welcome. Please fork this repository, make your modifications, and submit a pull request.
 
-License
-This project is licensed under the MIT License. See the LICENSE file for details.
-
-Feel free to customize this README to better suit your project's specific details and requirements.
