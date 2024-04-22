@@ -3,3 +3,6 @@
 2024-04-21 21:50:11 - Car returned: C020 by customer gill
 2024-04-22 00:30:11 - Car rented: C012 to customer gill for 23 days.
 2024-04-22 00:30:35 - Car returned: C012 by customer gill
+2024-04-22 00:56:15 - Car rented: C002 to customer gill for 23 days.
+2024-04-22 00:58:28 - Car rented: C003 to customer gill for 2 days.
+2024-04-22 01:01:21 - Car rented: C001 to customer gi for 2 days.
