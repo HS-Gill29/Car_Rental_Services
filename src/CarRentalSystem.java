@@ -26,9 +26,10 @@ class CarRentalSystem {
     if (car.isAvailable()) {
       car.rent();
       rentals.add(new Rental(car, customer, days));
-
+      Logger.logTransaction("Car rented: " + car.getCarId() + " to customer " + customer.getName() + " for " + days + " days.");
     } else {
       System.out.println("Car is not available for rent.");
+      Logger.logTransaction("Failed rental attempt: Car " + car.getCarId() + " is not available.");
     }
   }
 
@@ -43,9 +44,10 @@ class CarRentalSystem {
     }
     if (rentalToRemove != null) {
       rentals.remove(rentalToRemove);
-
+      Logger.logTransaction("Car returned: " + car.getCarId() + " by customer " + rentalToRemove.getCustomer().getName());
     } else {
       System.out.println("Car was not rented.");
+      Logger.logTransaction("Failed return attempt: Car " + car.getCarId() + " was not rented.");
     }
   }
 
@@ -78,7 +80,12 @@ class CarRentalSystem {
   public static void rentACar() {
     System.out.println("\n== Rent a Car ==\n");
     System.out.print("Enter your name: ");
-    String customerName = scanner.nextLine();
+    String customerName = scanner.nextLine().trim();
+
+    if (customerName.isEmpty()) {
+      System.out.println("Invalid Username. Please enter a non-empty name.");
+      return;
+    }
 
     System.out.println("\nAvailable Cars:");
     for (Car car : cars) {
@@ -99,7 +106,7 @@ class CarRentalSystem {
 
     Car selectedCar = null;
     for (Car car : cars) {
-      if (car.getCarId().equals(carId) && car.isAvailable()) {
+      if (car.getCarId().toLowerCase().equals(carId) && car.isAvailable()) {
         selectedCar = car;
         break;
       }
@@ -126,6 +133,7 @@ class CarRentalSystem {
     } else {
       System.out.println("\nInvalid car selection or car not available for rent.");
     }
+
   }
 
   public static void returnACar() {
@@ -135,7 +143,7 @@ class CarRentalSystem {
 
     Car carToReturn = null;
     for (Car car : cars) {
-      if (car.getCarId().equals(carId) && !car.isAvailable()) {
+      if (car.getCarId().toLowerCase().equals(carId) && !car.isAvailable()) {
         carToReturn = car;
         break;
       }
